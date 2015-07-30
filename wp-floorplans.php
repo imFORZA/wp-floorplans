@@ -117,7 +117,6 @@ add_action( 'init', 'wpfloorplans_highlights_tax', 0 );
     - Baths
     - Garage
     - Priced From
-    - Custom Taxonomy Tag - "Highlights"
     - Gallery Section
     - Floorplans Image Meta Field
     - Associated Listing IDs
