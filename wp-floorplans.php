@@ -62,3 +62,21 @@ function wpfloorplans_floorplans_cpt() {
 add_action( 'init', 'wpfloorplans_floorplans_cpt', 0 );
 
 }
+
+
+
+/*
+	List of all Fields we need to build out
+  	- Style
+    - Square Footage
+    - Bedrooms
+    - Baths
+    - Garage
+    - Priced From
+    - Custom Taxonomy Tag - "Highlights"
+    - Gallery Section
+    - Floorplans Image Meta Field
+    - Associated Listing IDs
+    - PDF Brochure Field - Upload PDF supported needed
+
+ */
