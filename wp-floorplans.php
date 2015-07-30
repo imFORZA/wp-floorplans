@@ -16,7 +16,7 @@
 
 if ( ! function_exists('wpfloorplans_floorplans_cpt') ) {
 
-// Register Custom Post Type
+// Register Floorplans Custom Post Type
 function wpfloorplans_floorplans_cpt() {
 
 	$labels = array(
@@ -63,6 +63,50 @@ add_action( 'init', 'wpfloorplans_floorplans_cpt', 0 );
 
 }
 
+
+
+
+if ( ! function_exists( 'wpfloorplans_highlights_tax' ) ) {
+
+// Register Highlights Taxonomy
+function wpfloorplans_highlights_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Highlights', 'Taxonomy General Name', 'wpfloorplans' ),
+		'singular_name'              => _x( 'Highlight', 'Taxonomy Singular Name', 'wpfloorplans' ),
+		'menu_name'                  => __( 'Highlights', 'wpfloorplans' ),
+		'all_items'                  => __( 'All Highlights', 'wpfloorplans' ),
+		'parent_item'                => __( 'Parent Highlight', 'wpfloorplans' ),
+		'parent_item_colon'          => __( 'Parent Highlight:', 'wpfloorplans' ),
+		'new_item_name'              => __( 'New Highlight Name', 'wpfloorplans' ),
+		'add_new_item'               => __( 'Add New Highlight', 'wpfloorplans' ),
+		'edit_item'                  => __( 'Edit Highlight', 'wpfloorplans' ),
+		'update_item'                => __( 'Update Highlight', 'wpfloorplans' ),
+		'view_item'                  => __( 'View Highlight', 'wpfloorplans' ),
+		'separate_items_with_commas' => __( 'Separate Highlights with commas', 'wpfloorplans' ),
+		'add_or_remove_items'        => __( 'Add or remove Highlights', 'wpfloorplans' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wpfloorplans' ),
+		'popular_items'              => __( 'Popular Highlights', 'wpfloorplans' ),
+		'search_items'               => __( 'Search Highlights', 'wpfloorplans' ),
+		'not_found'                  => __( 'No Highlight Found', 'wpfloorplans' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'highlights', array( 'wpfloorplans' ), $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'wpfloorplans_highlights_tax', 0 );
+
+}
 
 
 /*
