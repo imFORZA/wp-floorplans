@@ -57,6 +57,7 @@ function wpfloorplans_floorplans_cpt() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'page',
+		'rewrite' 			  => array('slug'=>'floorplan', 'with_front' => false)
 	);
 	register_post_type( 'wpfloorplans', $args );
 
