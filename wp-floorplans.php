@@ -105,6 +105,7 @@ function wpfloorplans_highlights_tax() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
+		'rewrite'					 => array('slug'=>'floorplan/highlight', 'with_front' => false)
 	);
 	register_taxonomy( 'highlights', array( 'wpfloorplans' ), $args );
 
@@ -114,6 +115,54 @@ function wpfloorplans_highlights_tax() {
 add_action( 'init', 'wpfloorplans_highlights_tax', 0 );
 
 }
+
+############################################################
+// Community Taxonomy
+############################################################
+
+if ( ! function_exists( 'wpfloorplans_community_tax' ) ) {
+
+// Register Highlights Taxonomy
+function wpfloorplans_community_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Community', 'Taxonomy General Name', 'wpfloorplans' ),
+		'singular_name'              => _x( 'Community', 'Taxonomy Singular Name', 'wpfloorplans' ),
+		'menu_name'                  => __( 'Communities', 'wpfloorplans' ),
+		'all_items'                  => __( 'All Communities', 'wpfloorplans' ),
+		'parent_item'                => __( 'Parent Community', 'wpfloorplans' ),
+		'parent_item_colon'          => __( 'Parent Community:', 'wpfloorplans' ),
+		'new_item_name'              => __( 'New Community Name', 'wpfloorplans' ),
+		'add_new_item'               => __( 'Add New Community', 'wpfloorplans' ),
+		'edit_item'                  => __( 'Edit Community', 'wpfloorplans' ),
+		'update_item'                => __( 'Update Community', 'wpfloorplans' ),
+		'view_item'                  => __( 'View Community', 'wpfloorplans' ),
+		'separate_items_with_commas' => __( 'Separate Communities with commas', 'wpfloorplans' ),
+		'add_or_remove_items'        => __( 'Add or remove Communities', 'wpfloorplans' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wpfloorplans' ),
+		'popular_items'              => __( 'Popular Communities', 'wpfloorplans' ),
+		'search_items'               => __( 'Search Communities', 'wpfloorplans' ),
+		'not_found'                  => __( 'No Communities Found', 'wpfloorplans' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'rewrite'					 => array('slug'=>'floorplan/community', 'with_front' => false)
+	);
+	register_taxonomy( 'community', array( 'wpfloorplans' ), $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'wpfloorplans_community_tax', 0 );
+
+}
+
 
 ############################################################
 // CPT Meta Boxes
