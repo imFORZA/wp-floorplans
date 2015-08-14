@@ -169,7 +169,7 @@ $wpfloorplans_meta_box = array(
 			'id' => $wpfloorplans_prefix . 'floorplan_brochure',
 			'type' => 'text',
 			'std' => ''
-		)
+		),
 		array(
 			'name' => 'Virtual Tour URL',
 			'id' => $wpfloorplans_prefix . 'floorplan_virtual_tour',
