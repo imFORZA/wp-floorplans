@@ -170,6 +170,12 @@ $wpfloorplans_meta_box = array(
 			'type' => 'text',
 			'std' => ''
 		)
+		array(
+			'name' => 'Virtual Tour URL',
+			'id' => $wpfloorplans_prefix . 'floorplan_virtual_tour',
+			'type' => 'text',
+			'std' => ''
+		)
 	)
 );
 add_action('admin_menu', 'wpfloorplans_add_metaboxes');
@@ -426,6 +432,14 @@ function wpfloorplans_brochure_url() {
 	$wpfloorplans_brochure_url = get_post_meta(get_the_ID(), 'wpfloorplans_floorplan_brochure', true);
 	if ($wpfloorplans_brochure_url == '') {} else {
 		echo $wpfloorplans_brochure_url;
+	}
+}
+
+function wpfloorplans_virtual_tour_url() {
+	global $wpfloorplans_virtual_tour_url;
+	$wpfloorplans_virtual_tour_url = get_post_meta(get_the_ID(), 'wpfloorplans_floorplan_virtual_tour', true);
+	if ($wpfloorplans_virtual_tour_url == '') {} else {
+		echo $wpfloorplans_virtual_tour_url;
 	}
 }
 
