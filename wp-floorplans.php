@@ -567,39 +567,3 @@ function wpfloorplans_templates( $template_path ) {
 	}
 	return $template_path;
 }
-
-################################################################################
-// Improved Jetpack Support
-################################################################################
-if ( ! function_exists( 'wpfloorplans_jetpack_support' ) ) :
-function wpfloorplans_jetpack_support() {
-
-    // Support Jetpack Responsive Videos
-	add_theme_support( 'jetpack-responsive-videos' );
-
-	// Support Tonesque
-	add_theme_support( 'tonesque' );
-
-	// Support Jetpack Social Links
-	// See - http://jetpack.me/support/social-links/
-	add_theme_support( 'social-links', array('facebook', 'twitter', 'linkedin', 'google_plus', 'tumblr' ) );
-
-
-    // Support Featured Content
-    // See - http://jetpack.me/support/featured-content/
-
-    add_theme_support( 'featured-content', array(
-        'filter'     => 'wpfloorplans_get_featured_content',
-        'max_posts'  => 20,
-        'post_types' => array( 'post' ),
-    ) );
-
-    // Get Featured Content
-    function wpfloorplans_get_featured_content() {
-        return apply_filters( 'wpfloorplans_get_featured_content', array() );
-    }
-
-
-}
-endif; // homesbyguardian_setup
-add_action( 'after_setup_theme', 'wpfloorplans_jetpack_support' );
