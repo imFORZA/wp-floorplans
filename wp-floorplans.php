@@ -202,6 +202,12 @@ $wpfloorplans_meta_box = array(
 			'std' => ''
 		),
 		array(
+			'name' => 'Floors',
+			'id' => $wpfloorplans_prefix . 'floorplan_floors',
+			'type' => 'text',
+			'std' => ''
+		),
+		array(
 			'name' => 'Garage',
 			'id' => $wpfloorplans_prefix . 'floorplan_garages',
 			'type' => 'text',
@@ -459,6 +465,15 @@ function wpfloorplans_baths() {
 		echo '<span id="floorplan-baths">' . $wpfloorplans_baths . '</span>';
 	}
 }
+
+function wpfloorplans_floors() {
+	global $wpfloorplans_floors;
+	$wpfloorplans_floors = get_post_meta(get_the_ID(), 'wpfloorplans_floorplan_floors', true);
+	if ($wpfloorplans_floors == '') {} else {
+		echo '<span id="floorplan-floors">' . $wpfloorplans_floors . '</span>';
+	}
+}
+
 
 function wpfloorplans_garages() {
 	global $wpfloorplans_garages;
