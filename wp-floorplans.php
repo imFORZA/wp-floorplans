@@ -564,6 +564,16 @@ function wpfloorplans_templates( $template_path ) {
 				$template_path = plugin_dir_path(__FILE__) . 'templates/archive-wpfloorplans.php';
 			}
 		}
+		
+		// Taxonomy Floorplan Template
+		if (is_tax()) {
+			// Check if a file exists in the theme, otherwise serve from plugin
+			if($theme_file = locate_template(array('taxonomy-wpfloorplans.php'))) {
+				$template_path = $theme_file;
+			} else {
+				$template_path = plugin_dir_path(__FILE__) . 'templates/archive-wpfloorplans.php';
+			}
+		}
 	}
 	return $template_path;
 }
