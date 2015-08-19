@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name: WP FloorPlans - BETA
- * Version: 0.0.1
+ * Version: 0.0.2
  * Plugin URI: //www.imforza.com
- * Description:
+ * Description: A WordPress plugin to display Floor Plans.
  * Author: imFORZA
  * Author URI: //www.imforza.com
  * Text Domain: wpfloorplans
@@ -12,8 +12,105 @@
  * License: GPL v3
 */
 
+
 ############################################################
-// Custom Post Type
+// Community Taxonomy
+############################################################
+
+if ( ! function_exists( 'wpfloorplans_community_tax' ) ) {
+
+// Register Highlights Taxonomy
+function wpfloorplans_community_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Community', 'Taxonomy General Name', 'wpfloorplans' ),
+		'singular_name'              => _x( 'Community', 'Taxonomy Singular Name', 'wpfloorplans' ),
+		'menu_name'                  => __( 'Communities', 'wpfloorplans' ),
+		'all_items'                  => __( 'All Communities', 'wpfloorplans' ),
+		'parent_item'                => __( 'Parent Community', 'wpfloorplans' ),
+		'parent_item_colon'          => __( 'Parent Community:', 'wpfloorplans' ),
+		'new_item_name'              => __( 'New Community Name', 'wpfloorplans' ),
+		'add_new_item'               => __( 'Add New Community', 'wpfloorplans' ),
+		'edit_item'                  => __( 'Edit Community', 'wpfloorplans' ),
+		'update_item'                => __( 'Update Community', 'wpfloorplans' ),
+		'view_item'                  => __( 'View Community', 'wpfloorplans' ),
+		'separate_items_with_commas' => __( 'Separate Communities with commas', 'wpfloorplans' ),
+		'add_or_remove_items'        => __( 'Add or remove Communities', 'wpfloorplans' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wpfloorplans' ),
+		'popular_items'              => __( 'Popular Communities', 'wpfloorplans' ),
+		'search_items'               => __( 'Search Communities', 'wpfloorplans' ),
+		'not_found'                  => __( 'No Communities Found', 'wpfloorplans' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'rewrite'					 => array('slug'=>'floorplan/community', 'with_front' => false)
+	);
+	register_taxonomy( 'community', array( 'wpfloorplans' ), $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'wpfloorplans_community_tax', 0 );
+
+}
+
+
+############################################################
+// Highlights Taxonomy
+############################################################
+
+if ( ! function_exists( 'wpfloorplans_highlights_tax' ) ) {
+
+// Register Highlights Taxonomy
+function wpfloorplans_highlights_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Highlights', 'Taxonomy General Name', 'wpfloorplans' ),
+		'singular_name'              => _x( 'Highlight', 'Taxonomy Singular Name', 'wpfloorplans' ),
+		'menu_name'                  => __( 'Highlights', 'wpfloorplans' ),
+		'all_items'                  => __( 'All Highlights', 'wpfloorplans' ),
+		'parent_item'                => __( 'Parent Highlight', 'wpfloorplans' ),
+		'parent_item_colon'          => __( 'Parent Highlight:', 'wpfloorplans' ),
+		'new_item_name'              => __( 'New Highlight Name', 'wpfloorplans' ),
+		'add_new_item'               => __( 'Add New Highlight', 'wpfloorplans' ),
+		'edit_item'                  => __( 'Edit Highlight', 'wpfloorplans' ),
+		'update_item'                => __( 'Update Highlight', 'wpfloorplans' ),
+		'view_item'                  => __( 'View Highlight', 'wpfloorplans' ),
+		'separate_items_with_commas' => __( 'Separate Highlights with commas', 'wpfloorplans' ),
+		'add_or_remove_items'        => __( 'Add or remove Highlights', 'wpfloorplans' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wpfloorplans' ),
+		'popular_items'              => __( 'Popular Highlights', 'wpfloorplans' ),
+		'search_items'               => __( 'Search Highlights', 'wpfloorplans' ),
+		'not_found'                  => __( 'No Highlight Found', 'wpfloorplans' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'rewrite'					 => array('slug'=>'floorplan/highlight', 'with_front' => false)
+	);
+	register_taxonomy( 'highlights', array( 'wpfloorplans' ), $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'wpfloorplans_highlights_tax', 0 );
+
+}
+
+
+############################################################
+// FloorPlan Custom Post Type
 ############################################################
 
 if ( ! function_exists('wpfloorplans_floorplans_cpt') ) {
@@ -69,99 +166,7 @@ add_action( 'init', 'wpfloorplans_floorplans_cpt', 0 );
 }
 
 
-############################################################
-// Highlights Taxonomy
-############################################################
 
-if ( ! function_exists( 'wpfloorplans_highlights_tax' ) ) {
-
-// Register Highlights Taxonomy
-function wpfloorplans_highlights_tax() {
-
-	$labels = array(
-		'name'                       => _x( 'Highlights', 'Taxonomy General Name', 'wpfloorplans' ),
-		'singular_name'              => _x( 'Highlight', 'Taxonomy Singular Name', 'wpfloorplans' ),
-		'menu_name'                  => __( 'Highlights', 'wpfloorplans' ),
-		'all_items'                  => __( 'All Highlights', 'wpfloorplans' ),
-		'parent_item'                => __( 'Parent Highlight', 'wpfloorplans' ),
-		'parent_item_colon'          => __( 'Parent Highlight:', 'wpfloorplans' ),
-		'new_item_name'              => __( 'New Highlight Name', 'wpfloorplans' ),
-		'add_new_item'               => __( 'Add New Highlight', 'wpfloorplans' ),
-		'edit_item'                  => __( 'Edit Highlight', 'wpfloorplans' ),
-		'update_item'                => __( 'Update Highlight', 'wpfloorplans' ),
-		'view_item'                  => __( 'View Highlight', 'wpfloorplans' ),
-		'separate_items_with_commas' => __( 'Separate Highlights with commas', 'wpfloorplans' ),
-		'add_or_remove_items'        => __( 'Add or remove Highlights', 'wpfloorplans' ),
-		'choose_from_most_used'      => __( 'Choose from the most used', 'wpfloorplans' ),
-		'popular_items'              => __( 'Popular Highlights', 'wpfloorplans' ),
-		'search_items'               => __( 'Search Highlights', 'wpfloorplans' ),
-		'not_found'                  => __( 'No Highlight Found', 'wpfloorplans' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => false,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-		'rewrite'					 => array('slug'=>'floorplan/highlight', 'with_front' => false)
-	);
-	register_taxonomy( 'highlights', array( 'wpfloorplans' ), $args );
-
-}
-
-// Hook into the 'init' action
-add_action( 'init', 'wpfloorplans_highlights_tax', 0 );
-
-}
-
-############################################################
-// Community Taxonomy
-############################################################
-
-if ( ! function_exists( 'wpfloorplans_community_tax' ) ) {
-
-// Register Highlights Taxonomy
-function wpfloorplans_community_tax() {
-
-	$labels = array(
-		'name'                       => _x( 'Community', 'Taxonomy General Name', 'wpfloorplans' ),
-		'singular_name'              => _x( 'Community', 'Taxonomy Singular Name', 'wpfloorplans' ),
-		'menu_name'                  => __( 'Communities', 'wpfloorplans' ),
-		'all_items'                  => __( 'All Communities', 'wpfloorplans' ),
-		'parent_item'                => __( 'Parent Community', 'wpfloorplans' ),
-		'parent_item_colon'          => __( 'Parent Community:', 'wpfloorplans' ),
-		'new_item_name'              => __( 'New Community Name', 'wpfloorplans' ),
-		'add_new_item'               => __( 'Add New Community', 'wpfloorplans' ),
-		'edit_item'                  => __( 'Edit Community', 'wpfloorplans' ),
-		'update_item'                => __( 'Update Community', 'wpfloorplans' ),
-		'view_item'                  => __( 'View Community', 'wpfloorplans' ),
-		'separate_items_with_commas' => __( 'Separate Communities with commas', 'wpfloorplans' ),
-		'add_or_remove_items'        => __( 'Add or remove Communities', 'wpfloorplans' ),
-		'choose_from_most_used'      => __( 'Choose from the most used', 'wpfloorplans' ),
-		'popular_items'              => __( 'Popular Communities', 'wpfloorplans' ),
-		'search_items'               => __( 'Search Communities', 'wpfloorplans' ),
-		'not_found'                  => __( 'No Communities Found', 'wpfloorplans' ),
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-		'rewrite'					 => array('slug'=>'floorplan/community', 'with_front' => false)
-	);
-	register_taxonomy( 'floorplan-community', array( 'wpfloorplans' ), $args );
-
-}
-
-// Hook into the 'init' action
-add_action( 'init', 'wpfloorplans_community_tax', 0 );
-
-}
 
 
 ############################################################
@@ -312,16 +317,16 @@ function wpfloorplans_add_metaboxes() {
 
 function wpfloorplans_show_box() {
 	global $wpfloorplans_meta_box, $post;
-	
+
 	echo '<input type="hidden" name="wpfloorplans_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
-	
+
 	echo '<table class="form-table" style="overflow:hidden;">';
-	
+
 		foreach($wpfloorplans_meta_box['fields'] as $field) {
 			$wpfloorplans_meta = get_post_meta($post->ID, $field['id'], true);
-			
+
 			switch ($field['type']) {
-				
+
 				case 'text':
 					echo '<tr>',
 					'<th style="width: 15%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
@@ -329,7 +334,7 @@ function wpfloorplans_show_box() {
 					echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $wpfloorplans_meta ? $wpfloorplans_meta : $field['std'], '" size="20" style="width: 50%; min-width: 150px;" />', '<br />', isset($field['desc']);
 					echo '</td>', '</tr>';
 				break;
-				
+
 			}
 		}
 		echo '</table>';
@@ -344,14 +349,14 @@ function wpfloorplans_add_gallery_metaboxes() {
 
 function wpfloorplans_show_gallerybox() {
 	global $wpfloorplans_gallery_boxes, $post;
-	
+
 	echo '<input type="hidden" name="wpfloorplans_gallery_boxes_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
-	
+
 	echo '<table class="form-table" style="overflow:hidden">';
-	
+
 		foreach($wpfloorplans_gallery_boxes['fields'] as $field) {
 			$wpfloorplans_gallerymeta = get_post_meta($post->ID, $field['id'], true);
-			
+
 			switch ($field['type']) {
 				case 'wysiwyg':
 					echo '<label style="font-weight:bold;" for="', $field['id'], '">', $field['name'], '</label>',
@@ -359,7 +364,7 @@ function wpfloorplans_show_gallerybox() {
 						wp_editor($wpfloorplans_gallerymeta ? $wpfloorplans_gallerymeta : $field['std'], $field['id']);
 					echo '</div>';
 				break;
-				
+
 			}
 		}
 		echo '</table>';
@@ -370,26 +375,26 @@ add_action('save_post', 'wpfloorplans_save_data');
 
 function wpfloorplans_save_data($post_id) {
 	global $wpfloorplans_meta_box;
-	
+
 	if (isset($_POST['wpfloorplans_meta_box_nonce']) && !wp_verify_nonce($_POST['wpfloorplans_meta_box_nonce'], basename(__FILE__))) {
 		return $post_id;
 	}
-	
+
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
 	return;
-	
+
 	if (!current_user_can('edit_post', $post_id))
 	return;
-	
+
 	foreach($wpfloorplans_meta_box['fields'] as $field) {
 		$wpfloorplan_old = get_post_meta($post_id, $field['id'], true);
-		
+
 		if (!empty($_POST[$field['id']])) {
 			$wpfloorplan_new = $_POST[$field['id']];
 		} else {
 			$wpfloorplan_new = '';
 		}
-		
+
 		if ($wpfloorplan_new && $wpfloorplan_new != $wpfloorplan_old) {
 			update_post_meta($post_id, $field['id'], $wpfloorplan_new);
 		} elseif ('' == $wpfloorplan_new && $wpfloorplan_old) {
@@ -403,26 +408,26 @@ add_action('save_post', 'wpfloorplans_save_gallerydata');
 
 function wpfloorplans_save_gallerydata($post_id) {
 	global $wpfloorplans_gallery_boxes;
-	
+
 	if (isset($_POST['wpfloorplans_gallery_boxes_nonce']) && !wp_verify_nonce($_POST['wpfloorplans_gallery_boxes_nonce'], basename(__FILE__))) {
 		return $post_id;
 	}
-	
+
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
 	return;
-	
+
 	if (!current_user_can('edit_post', $post_id))
 	return;
-	
+
 	foreach($wpfloorplans_gallery_boxes['fields'] as $field) {
 		$wpfloorplan_gallery_old = get_post_meta($post_id, $field['id'], true);
-		
+
 		if (!empty($_POST[$field['id']])) {
 			$wpfloorplan_gallery_new = $_POST[$field['id']];
 		} else {
 			$wpfloorplan_gallery_new = '';
 		}
-		
+
 		if ($wpfloorplan_gallery_new && $wpfloorplan_gallery_new != $wpfloorplan_gallery_old) {
 			update_post_meta($post_id, $field['id'], $wpfloorplan_gallery_new);
 		} elseif ('' == $wpfloorplan_gallery_new && $wpfloorplan_gallery_old) {
@@ -544,7 +549,7 @@ add_filter( 'template_include', 'wpfloorplans_templates', 1 );
 
 function wpfloorplans_templates( $template_path ) {
 	if (get_post_type() == 'wpfloorplans') {
-		
+
 		// Single Floorplan Template
 		if (is_single()) {
 			// Check if a file exists in the theme, otherwise serve from plugin
@@ -554,7 +559,7 @@ function wpfloorplans_templates( $template_path ) {
 				$template_path = plugin_dir_path(__FILE__) . 'templates/single-wpfloorplans.php';
 			}
 		}
-		
+
 		// Archive Floorplan Template
 		if (is_archive()) {
 			// Check if a file exists in the theme, otherwise serve from plugin
@@ -564,9 +569,9 @@ function wpfloorplans_templates( $template_path ) {
 				$template_path = plugin_dir_path(__FILE__) . 'templates/archive-wpfloorplans.php';
 			}
 		}
-		
+
 		// Taxonomy Floorplan Template
-		if (is_tax()) {
+		if (is_tax('community')) {
 			// Check if a file exists in the theme, otherwise serve from plugin
 			if($theme_file = locate_template(array('archive-wpfloorplans.php'))) {
 				$template_path = $theme_file;
