@@ -154,7 +154,7 @@ function wpfloorplans_community_tax() {
 		'show_tagcloud'              => true,
 		'rewrite'					 => array('slug'=>'floorplan/community', 'with_front' => false)
 	);
-	register_taxonomy( 'community', array( 'wpfloorplans' ), $args );
+	register_taxonomy( 'floorplan-community', array( 'wpfloorplans' ), $args );
 
 }
 
@@ -568,7 +568,7 @@ function wpfloorplans_templates( $template_path ) {
 		// Taxonomy Floorplan Template
 		if (is_tax()) {
 			// Check if a file exists in the theme, otherwise serve from plugin
-			if($theme_file = locate_template(array('taxonomy-wpfloorplans.php'))) {
+			if($theme_file = locate_template(array('archive-wpfloorplans.php'))) {
 				$template_path = $theme_file;
 			} else {
 				$template_path = plugin_dir_path(__FILE__) . 'templates/archive-wpfloorplans.php';
