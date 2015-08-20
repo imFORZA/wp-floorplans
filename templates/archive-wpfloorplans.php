@@ -16,7 +16,9 @@
 					
 					<div class="wpfloorplans-archive-floorplan">
 						
-						<h2 class="wpfloorplans-floorplan-title"><?php the_title(); ?></h2>
+						<h2 class="wpfloorplans-floorplan-title">
+							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+						</h2>
 			
 						<div class="wp-floorplans-archive-photo">
 							<a href="<?php the_permalink(); ?>">
