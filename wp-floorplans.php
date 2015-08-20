@@ -12,6 +12,18 @@
  * License: GPL v3
 */
 
+############################################################
+// Add CSS File
+############################################################
+
+add_action('wp_enqueue_scripts', 'wpfloorplans_styles');
+
+function wpfloorplans_styles() {
+	if(!is_admin()) {
+		wp_register_style('wpfloorplans', plugins_url( 'wp-floorplans/css/wp-floorplans.css'), false, null, 'all');
+		wp_enqueue_style('wpfloorplans');
+	}
+}
 
 ############################################################
 // Community Taxonomy
@@ -286,7 +298,7 @@ $wpfloorplans_gallery_boxes = array(
 				'quicktags' => true
 			)
 		),
-		/* array (
+		array (
 			'name' => 'Listings Gallery',
 			'id' => $wpfloorplans_prefix . 'floorplan_listings_gallery',
 			'type' => 'wysiwyg',
@@ -304,7 +316,7 @@ $wpfloorplans_gallery_boxes = array(
 				'tinymce' => true,
 				'quicktags' => true
 			)
-		) */
+		)
 	)
 );
 add_action('admin_menu', 'wpfloorplans_add_gallery_metaboxes');
