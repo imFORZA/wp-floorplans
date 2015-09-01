@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Plugin Name: WP FloorPlans - BETA
- * Version: 0.0.2
+ * Plugin Name: WP FloorPlans
+ * Version: 1.0.0
  * Plugin URI: //www.imforza.com
  * Description: A WordPress plugin to display Floor Plans.
  * Author: imFORZA
