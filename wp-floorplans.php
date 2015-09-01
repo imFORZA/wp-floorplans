@@ -27,7 +27,7 @@ add_action('wp_enqueue_scripts', 'wpfloorplans_styles');
 
 function wpfloorplans_styles() {
 	if(!is_admin()) {
-		wp_register_style('wpfloorplans', plugins_url( 'wp-floorplans/css/wp-floorplans.css'), false, null, 'all');
+		wp_register_style('wpfloorplans', plugins_url( 'assets/css/wp-floorplans.css', __FILE__ ), false, null, 'all');
 		wp_enqueue_style('wpfloorplans');
 	}
 }
@@ -196,61 +196,61 @@ add_action( 'init', 'wpfloorplans_floorplans_cpt', 0 );
 $wpfloorplans_prefix = 'wpfloorplans_';
 $wpfloorplans_meta_box = array(
 	'id' => 'floorplan-details',
-	'title' => 'Floorplan Details',
+	'title' => __( 'Floorplan Details', 'wpfloorplans' ),
 	'page' => 'wpfloorplans',
 	'context' => 'normal',
 	'priority' => 'high',
 	'fields' => array(
 		array(
-			'name' => 'Style',
+			'name' => __( 'Style', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_style',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'Square Footage',
+			'name' => __( 'Square Footage', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_sqft',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'Bedrooms',
+			'name' => __( 'Bedrooms', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_beds',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'Baths',
+			'name' => __( 'Baths', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_baths',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'Floors',
+			'name' => __( 'Floors', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_floors',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'Garage',
+			'name' => __( 'Garage', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_garages',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'Priced From',
+			'name' => __( 'Priced From', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_price',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'PDF Brochure URL',
+			'name' => __( 'PDF Brochure URL', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_brochure',
 			'type' => 'text',
 			'std' => ''
 		),
 		array(
-			'name' => 'Virtual Tour URL',
+			'name' => __( 'Virtual Tour URL', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_virtual_tour',
 			'type' => 'text',
 			'std' => ''
@@ -262,13 +262,13 @@ add_action('admin_menu', 'wpfloorplans_add_metaboxes');
 // Setup Photos Meta Boxes
 $wpfloorplans_gallery_boxes = array(
 	'id' => 'floorplan-galleries',
-	'title' => 'Floorplan Galleries',
+	'title' => __( 'Floorplan Galleries', 'wpfloorplans' ),
 	'page' => 'wpfloorplans',
 	'context' => 'normal',
 	'priority' => 'high',
 	'fields' => array (
 		array (
-			'name' => 'Floorplan Gallery',
+			'name' => __( 'Floorplan Gallery', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_floorplan_gallery',
 			'type' => 'wysiwyg',
 			'std' => '',
@@ -287,7 +287,7 @@ $wpfloorplans_gallery_boxes = array(
 			)
 		),
 		array (
-			'name' => 'Photo Gallery',
+			'name' => __( 'Photo Gallery', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_photo_gallery',
 			'type' => 'wysiwyg',
 			'std' => '',
@@ -306,7 +306,7 @@ $wpfloorplans_gallery_boxes = array(
 			)
 		),
 		array (
-			'name' => 'Listings Gallery',
+			'name' => __( 'Listings Gallery', 'wpfloorplans' ),
 			'id' => $wpfloorplans_prefix . 'floorplan_listings_gallery',
 			'type' => 'wysiwyg',
 			'std' => '',
