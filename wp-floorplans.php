@@ -20,7 +20,7 @@ add_action('wp_enqueue_scripts', 'wpfloorplans_styles');
 
 function wpfloorplans_styles() {
 	if(!is_admin()) {
-		wp_register_style('wpfloorplans', plugins_url( 'wp-floorplans/css/wp-floorplans.css'), false, null, 'all');
+		wp_register_style('wpfloorplans', plugins_url( 'css/wp-floorplans.css', __FILE__ ), false, null, 'all');
 		wp_enqueue_style('wpfloorplans');
 	}
 }
