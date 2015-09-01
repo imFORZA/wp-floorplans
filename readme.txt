@@ -1,5 +1,5 @@
 ===== WP-Floorplans =====
-Contributors: acfoltz, bhubbard, imforza
+Contributors: acfoltz, acevans27, bhubbard, imforza
 Tags: floor plans, house plans, floorplans
 Requires at least: 3.7
 Tested up to: 4.3
