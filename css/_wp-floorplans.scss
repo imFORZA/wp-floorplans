@@ -1,0 +1,20 @@
+@import '_wp-floorplans-archive.scss';
+@import '_wp-floorplans-single.scss';
+
+.wpfloorplans-page-container {
+	max-width: 95%;
+	margin: 0 auto;
+}
+
+a.wpfloorplans-btn {
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+	border: 1px solid #ccc;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+a.wpfloorplans-btn:hover {
+	background: #eee;
+}

@@ -1,0 +1,60 @@
+.wpfloorplans-single-photo img {
+	width: 100%;
+	height: auto;
+}
+
+.wpfloorplans-single-row {
+	width: 100%;
+	background: #fff;
+	display: table;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+	.wpfloorplans-single-col-left {
+		width: 66.6667%;
+		padding: 10px 15px 10px 10px;
+		float: left;
+		position: relative;
+		font-size: 16px;
+	}
+	.wpfloorplans-single-col-right {
+		width: 33.3333%;
+		padding: 10px;
+		float: left;
+		position: relative;
+		ul.wpfloorplans-single-detailsul {
+			list-style: none;
+			font-size: 14px;
+			padding-left: 0px;
+			li {
+				padding: 5px 10px;
+				label {
+					text-transform: uppercase;
+					font-weight: bold;
+				}
+				span {
+					float: right;
+				}
+			}
+			li:nth-child(odd) {
+				background: #eee;
+			}
+			li.wpfloorplans-highlight {
+				list-style: disc inside;
+			}
+		}
+	}
+}
+
+.wpfloorplans-single-gallery {
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 20px;
+	h3.wpfloorplans-gallery-title {
+		text-align: center;
+		border-bottom: 2px solid #eee;
+		text-transform: uppercase;
+	}
+}

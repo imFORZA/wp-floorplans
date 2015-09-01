@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Plugin Name: WP FloorPlans - BETA
- * Version: 0.0.2
+ * Plugin Name: WP FloorPlans
+ * Version: 1.0.0
  * Plugin URI: //www.imforza.com
  * Description: A WordPress plugin to display Floor Plans.
  * Author: imFORZA
@@ -11,6 +11,13 @@
  * Domain Path: /languages/
  * License: GPL v3
 */
+
+############################################################
+// Language Support
+############################################################
+
+load_plugin_textdomain('wp-floorplans', false, dirname(plugin_basename(__FILE__)) . '/languages');
+
 
 ############################################################
 // Add CSS File
@@ -593,4 +600,29 @@ function wpfloorplans_templates( $template_path ) {
 		}
 	}
 	return $template_path;
+}
+
+
+############################################################
+// Plugin Activation
+############################################################
+
+register_activation_hook(__FILE__, 'wpfloorplans_activate');
+
+function wpfloorplans_activate() {
+	global $wpdb;
+	
+	flush_rewrite_rules();
+}
+
+
+############################################################
+// Plugin Deactivation
+############################################################
+
+register_deactivation_hook(__FILE__, 'wpfloorplans_deactivation');
+
+function wpfloorplans_deactivation() {
+	
+	flush_rewrite_rules();
 }
